@@ -23,12 +23,11 @@ public class AppProperties {
     @NoArgsConstructor
     public static class RagProperties {
         private int chunkSize = 600;
-        private  int minChunkSizeChars=350;
-        private  int minChunkLengthToEmbed=5;
-        private  int maxNumChunks=10000;
-        //        private int chunkOverlap = 100;
-        private int topK = 5;
-        private double similarityThreshold = 0.0;
+        private int minChunkSizeChars = 350;
+        private int minChunkLengthToEmbed = 5;
+        private int maxNumChunks = 10000;
+        private int topK = 4;
+        private double similarityThreshold = 0.55;
     }
 
     @Getter

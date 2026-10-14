@@ -20,7 +20,7 @@ spring:
       chat:
         model: ${OLLAMA_CHAT_MODEL:llama3.2:3b}
         temperature: 0.2
-        num-ctx: 4096
+        num-ctx: 8192
       embedding:
         model: ${OLLAMA_EMBEDDING_MODEL:nomic-embed-text}
 
@@ -41,10 +41,10 @@ spring:
 #app configs
 app:
   rag:
-    chunk-size: 700
+    chunk-size: 600
     chunk-overlap: 100
-    top-k: 5
-    similarity-threshold: 0.0
+    top-k: 4
+    similarity-threshold: 0.55
 
   cors:
     allowed-origins: "*"
