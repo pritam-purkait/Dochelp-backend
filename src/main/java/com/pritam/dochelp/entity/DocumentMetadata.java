@@ -21,7 +21,7 @@ public class DocumentMetadata {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID Id;
 
-    @Column(unique = true)
+    @Column(unique = false)
     private String filename;
 
     @Column(nullable = false)
