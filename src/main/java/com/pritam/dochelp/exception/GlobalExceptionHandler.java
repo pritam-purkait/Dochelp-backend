@@ -1,6 +1,7 @@
 package com.pritam.dochelp.exception;
 
 import com.pritam.dochelp.dto.ApiResponse;
+import com.pritam.dochelp.repository.DocumentMetadataRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
