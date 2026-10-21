@@ -15,12 +15,20 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
 
+
+        String[] allowMethods = appProperties.getCors()
+                .getAllowedMethods()
+                .split("\\s*,\\s*");
+
+
         String[] allowOrigins = appProperties.getCors()
                 .getAllowedOrigins()
                 .split(",");
-        String[] allowMethods = appProperties.getCors()
-                .getAllowedMethods()
-                .split(",");
+
+//        String[] allowMethods = appProperties.getCors()
+//                .getAllowedMethods()
+//                .split(",");    PREV ONE
+
         String[] allowHeaders = appProperties.getCors()
                 .getAllowedHeaders()
                 .split(",");
@@ -29,7 +37,7 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowedOrigins(allowOrigins)
                 .allowedMethods(allowMethods)
                 .allowedHeaders(allowHeaders)
-                .allowCredentials(true);
+                .allowCredentials(false);
 
     }
 }

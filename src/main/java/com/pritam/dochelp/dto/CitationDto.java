@@ -16,7 +16,7 @@ public class CitationDto {
     private Integer chunkIndex;
     private Integer pageNumber;
     private String snippet;
-    private double similarityScore;
+    private Double similarityScore;
     private Map<String, Object> metadata;
 
 }

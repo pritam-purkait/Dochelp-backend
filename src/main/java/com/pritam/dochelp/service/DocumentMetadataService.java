@@ -7,6 +7,7 @@ import com.pritam.dochelp.entity.DocumentStatus;
 import com.pritam.dochelp.exception.DocumentProcessingException;
 import com.pritam.dochelp.exception.ResourceNotFoundException;
 import com.pritam.dochelp.repository.DocumentMetadataRepo;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -34,6 +35,7 @@ public class DocumentMetadataService {
     private final JdbcTemplate jdbcTemplate;
 
     //method to upload and parse document
+    @Transactional
     public DocumentResponseDto uploadAndProcess(MultipartFile file) {
 
         String filename = file.getOriginalFilename() != null ? file.getOriginalFilename() : "document";
@@ -109,11 +111,15 @@ public class DocumentMetadataService {
         return modelMapper.map(documentMetadata, DocumentMetadataDto.class);
     }
 
+    @Transactional
     public void deleteDocumentById(UUID id) {
 
         DocumentMetadata documentMetadata = documentMetadataRepo.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Document not found with id: " + id)
         );
+
+        documentMetadataRepo.delete(documentMetadata);
+
         //delete the vector entries
         try {
             String deleteVectorsSQL = "DELETE FROM vector_store WHERE metadata->>'document_id' = ?";

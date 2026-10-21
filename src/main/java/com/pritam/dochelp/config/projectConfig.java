@@ -35,7 +35,8 @@ public class projectConfig {
                                                                         Produce markdown output.
                         """
                 )
-                .defaultAdvisors(new SimpleLoggerAdvisor(), MessageChatMemoryAdvisor.builder(memory).build())
+//                .defaultAdvisors(new SimpleLoggerAdvisor(), MessageChatMemoryAdvisor.builder(memory).build())   for chat memory
+                .defaultAdvisors(new SimpleLoggerAdvisor())
                 .build();
     }
 

@@ -66,13 +66,13 @@ public class ChatController {
     public ResponseEntity<ApiResponse<SearchResultDto>> searchSimilar(
             @Valid @RequestBody SearchRequestDto searchRequestDto
     ){
-      ragService.searchSimilarChunks(searchRequestDto);
+        SearchResultDto result = ragService.searchSimilarChunks(searchRequestDto);
 
         return ResponseEntity.ok(
                 ApiResponse.<SearchResultDto>builder()
                         .success(true)
                         .message(null)
-                        .data(null)
+                        .data(result)
                         .timestamp(LocalDateTime.now())
                         .build()
         );

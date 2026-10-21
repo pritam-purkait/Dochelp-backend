@@ -47,7 +47,7 @@ app:
     similarity-threshold: 0.55
 
   cors:
-    allowed-origins: "*"
+    allowed-origins:  "http://localhost:5173"
     allowed-methods:
       - GET
       - POST
